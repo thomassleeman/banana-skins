@@ -1,0 +1,24 @@
+{
+  "name": "projectr",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.0.10",
+    "normalize.css": "^8.0.1",
+    "react": "17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10"
+  }
+}
