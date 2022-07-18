@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Column from './Column';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import initialData from './initial-data';
+import { useGlobalContext } from '../context';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -9,6 +11,10 @@ const Container = styled.section`
 `;
 
 const Kanban = () => {
+  const router = useRouter();
+
+  const { jobsData } = useGlobalContext();
+  console.log(jobsData);
   const [data, setData] = useState(initialData);
 
   const onDragEnd = (result) => {

@@ -1,0 +1,20 @@
+[
+  {
+    "_id": { "$oid": "62c702a671263bc37e52667b" },
+    "title": "Category 1",
+    "description": "Aenean sit amet justo. Morbi ut odio.",
+    "subtotal": 0
+  },
+  {
+    "_id": { "$oid": "62c702a671263bc37e52667c" },
+    "title": "Category 2",
+    "description": "Sit amet justo. Morbi ut.",
+    "subtotal": 0
+  },
+  {
+    "_id": { "$oid": "62c702a671263bc37e52667d" },
+    "title": "Category 3",
+    "description": "Amet justo. Morbi.",
+    "subtotal": 0
+  }
+]
