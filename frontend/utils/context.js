@@ -3,9 +3,10 @@ import reducer from './reducer';
 
 const defaultState = {
   loading: true,
+  jobsLoading: true,
   user: null,
   userData: [],
-  catData: [],
+  catsData: [],
   jobsData: [],
 };
 
@@ -39,10 +40,8 @@ const AppProvider = ({ children }) => {
     },
   };
 
-  const hello = 'hello World';
-
   return (
-    <AppContext.Provider value={{ ...state, endPoints, dispatch, hello }}>
+    <AppContext.Provider value={{ ...state, endPoints, dispatch }}>
       {children}
     </AppContext.Provider>
   );

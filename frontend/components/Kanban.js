@@ -25,14 +25,13 @@ const Kanban = () => {
     <Droppable droppableId="all-columns" direction="horizontal" type="column">
       {(provided) => (
         <Container {...provided.droppableProps} ref={provided.innerRef}>
-          {data.columnOrder.map((columnId, index) => {
-            const column = data.columns[columnId];
-            const tasks = column.taskIds.map((taskId) => data.tasks[taskId]);
+          {catsData.data.data.map((cat, index) => {
             return (
               <Column
-                key={column.id}
-                column={column}
-                tasks={tasks}
+                key={cat._id}
+                catId={cat._id}
+                title={cat.title}
+                description={cat.description}
                 index={index}
               />
             );

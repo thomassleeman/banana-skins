@@ -2,7 +2,7 @@ const Category = require('../models/categoryModel');
 const { json } = require('express');
 
 exports.getAllCats = async (req, res, next) => {
-  const doc = await Category.find().populate('category');
+  const doc = await Category.find();
 
   //SEND RESPONSE
   res.status(200).json({

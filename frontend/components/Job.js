@@ -7,23 +7,23 @@ const Container = styled.div`
   padding: 8px;
   margin-bottom: 8px;
   background-color: #fee402;
-  color: #48340;
+  color: #483401;
 `;
 
-const Task = ({ task, index }) => {
+const Job = ({ job, index }) => {
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable draggableId={job._id} index={index}>
       {(provided) => (
         <Container
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          {task.content}
+          {job.title}
         </Container>
       )}
     </Draggable>
   );
 };
 
-export default Task;
+export default Job;

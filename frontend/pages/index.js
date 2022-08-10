@@ -1,21 +1,21 @@
 import Kanban from '../components/Kanban';
-import { useGlobalContext } from '../context';
-import { useFetch } from '../useFetch';
+import { useGlobalContext } from '../utils/context';
+import { useFetch } from '../utils/useFetch';
 import Loading from '../components/Loading';
 import 'normalize.css';
 
 export default function Home() {
-  const { loading, dispatch } = useGlobalContext();
-  useFetch('jobs');
+  const { loading } = useGlobalContext();
+  useFetch('categories/');
 
   switch (loading) {
-    case false:
+    case true:
       return (
         <main>
           <Loading />
         </main>
       );
-    case true:
+    case false:
       return (
         <main>
           <Kanban />

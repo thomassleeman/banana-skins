@@ -5,11 +5,17 @@ const reducer = (state, action) => {
         ...state,
         loading: true,
       };
-    case 'DATA_UPDATE':
+    case 'FETCH_CATS':
+      return {
+        ...state,
+        catsData: action.payload,
+        loading: false,
+      };
+    case 'FETCH_JOBS':
       return {
         ...state,
         jobsData: action.payload,
-        loading: false,
+        jobsLoading: false,
       };
     default:
       return { ...state };

@@ -23,4 +23,6 @@ const categorySchema = new mongoose.Schema(
 
 const Category = mongoose.model('Category', categorySchema);
 
-module.exports = Category;
+const catOrder = [];
+
+(module.exports = Category), catOrder;
