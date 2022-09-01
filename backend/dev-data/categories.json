@@ -1,19 +1,25 @@
 [
   {
-    "_id": { "$oid": "62c702a671263bc37e52667b" },
+    "catIndex": 0,
     "title": "Category 1",
     "description": "Aenean sit amet justo. Morbi ut odio.",
     "subtotal": 0
   },
   {
-    "_id": { "$oid": "62c702a671263bc37e52667c" },
+    "catIndex": 1,
     "title": "Category 2",
     "description": "Sit amet justo. Morbi ut.",
     "subtotal": 0
   },
   {
-    "_id": { "$oid": "62c702a671263bc37e52667d" },
+    "catIndex": 2,
     "title": "Category 3",
+    "description": "Amet justo. Morbi.",
+    "subtotal": 0
+  },
+  {
+    "catIndex": 3,
+    "title": "Category 4",
     "description": "Amet justo. Morbi.",
     "subtotal": 0
   }

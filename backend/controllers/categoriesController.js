@@ -1,8 +1,9 @@
 const Category = require('../models/categoryModel');
 const { json } = require('express');
+const AppError = require('../utils/appError');
 
 exports.getAllCats = async (req, res, next) => {
-  const doc = await Category.find();
+  const doc = await Category.find().sort({ catIndex: 'asc' });
 
   //SEND RESPONSE
   res.status(200).json({
@@ -60,6 +61,30 @@ exports.updateCat = async (req, res, next) => {
     status: 'success',
     data: {
       data: doc,
+    },
+  });
+};
+
+exports.reorderCats = async (req, res, next) => {
+  // const doc1 = await Category.deleteMany({
+  //   index: {
+  //     $and: [{ $gte: req.body.startIndex }, { $lte: req.body.finishIndex }],
+  //   },
+  // });
+  const doc1 = await Category.deleteMany();
+  const doc2 = await Category.create(req.body.data);
+
+  if (!doc1) {
+    return next(new AppError('No documents found with that ID', 404));
+  }
+  if (!doc2) {
+    return next(new AppError('Data not found in request body', 400));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: doc2,
     },
   });
 };

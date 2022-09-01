@@ -9,3 +9,13 @@ type: is the user defined 'type' attribute of the droppable area.
 reason: not that important. Generally available for cancelled drops.
 source: Location information about where the drag started.
 destination: Location information about where the drag ended.
+
+TODO
+~~Fix cancelled drop~~
+~~Move jobs within category (update index)~~
+
+- Move jobs between categories
+- Add new Job
+- Add new Category
+- Delete Job
+- Delete Category

@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema(
   {
+    catIndex: {
+      type: Number,
+      unique: true,
+      required: [true, 'Every category must have an index'],
+    },
     title: {
       type: String,
       required: [true, 'Every category must have a title'],
@@ -23,6 +28,4 @@ const categorySchema = new mongoose.Schema(
 
 const Category = mongoose.model('Category', categorySchema);
 
-const catOrder = [];
-
-(module.exports = Category), catOrder;
+module.exports = Category;

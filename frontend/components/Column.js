@@ -25,7 +25,6 @@ const Tasklist = styled.div`
 `;
 
 const Column = ({ catId, title, description, index }) => {
-  useFetch('jobs/');
   const { jobsLoading, jobsData } = useGlobalContext();
   switch (jobsLoading) {
     case true:
@@ -41,7 +40,6 @@ const Column = ({ catId, title, description, index }) => {
         </Draggable>
       );
     case false:
-      const jobs = jobsData.data.data;
       return (
         <Draggable draggableId={catId} index={index}>
           {(provided) => (
@@ -49,15 +47,14 @@ const Column = ({ catId, title, description, index }) => {
               <Title {...provided.dragHandleProps}>{title}</Title>
               <p>{description}</p>
 
-              <Droppable droppableId={catId} type="jobs">
+              <Droppable droppableId={catId} type="job">
                 {(provided) => (
                   <Tasklist
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                   >
-                    {jobs.map((job, index) => {
+                    {jobsData.map((job, index) => {
                       if (job.category._id === catId) {
-                        console.log(job.title);
                         return <Job key={job._id} job={job} index={index} />;
                       }
                     })}

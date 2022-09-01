@@ -8,6 +8,8 @@ const defaultState = {
   userData: [],
   catsData: [],
   jobsData: [],
+  endPoint: '',
+  options: {},
 };
 
 const AppContext = React.createContext();
@@ -15,33 +17,8 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const endPoints = {
-    user: {
-      projects: '',
-      amend: '',
-    },
-    projects: {
-      all: '',
-      create: '',
-      delete: '',
-      amend: '',
-    },
-    columns: {
-      all: '',
-      create: '',
-      delete: '',
-      amend: '',
-    },
-    jobs: {
-      all: '',
-      create: '',
-      delete: '',
-      amend: '',
-    },
-  };
-
   return (
-    <AppContext.Provider value={{ ...state, endPoints, dispatch }}>
+    <AppContext.Provider value={{ ...state, dispatch }}>
       {children}
     </AppContext.Provider>
   );

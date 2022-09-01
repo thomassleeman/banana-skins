@@ -1,21 +1,26 @@
-// import { useRouter } from 'next/router';
 import { useEffect, useCallback } from 'react';
 import { useGlobalContext } from './context';
 
-export const useFetch = (newEndPoint) => {
+export const useFetch = (endPoint, options) => {
   const { dispatch } = useGlobalContext();
 
   const call = useCallback(
-    async (newEndPoint) => {
+    async (endPoint) => {
       const url = process.env.devUrl;
       try {
-        const response = await fetch(`${url}${newEndPoint}`);
+        const response = await fetch(`${url}${endPoint}`, options);
+
+        // if (options.method === 'GET' || !options.method) {
         const responseJson = await response.json();
-        if (newEndPoint === 'categories/') {
-          dispatch({ type: 'FETCH_CATS', payload: responseJson });
-        } else if (newEndPoint === 'jobs/') {
-          dispatch({ type: 'FETCH_JOBS', payload: responseJson });
+        if (endPoint === 'categories/') {
+          const catsData = responseJson.data.data;
+          dispatch({ type: 'UPDATE_CATS', payload: catsData });
         }
+        if (endPoint === 'jobs/byCategory') {
+          const jobsData = responseJson.data.data;
+          dispatch({ type: 'UPDATE_JOBS', payload: jobsData });
+        }
+        // }
       } catch (error) {
         console.log(error);
       }
@@ -24,6 +29,6 @@ export const useFetch = (newEndPoint) => {
   );
 
   useEffect(() => {
-    call(newEndPoint);
-  }, [newEndPoint, call]);
+    call(endPoint);
+  }, [endPoint, call]);
 };

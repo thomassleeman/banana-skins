@@ -5,18 +5,19 @@ const reducer = (state, action) => {
         ...state,
         loading: true,
       };
-    case 'FETCH_CATS':
+    case 'UPDATE_CATS':
       return {
         ...state,
         catsData: action.payload,
         loading: false,
       };
-    case 'FETCH_JOBS':
+    case 'UPDATE_JOBS':
       return {
         ...state,
         jobsData: action.payload,
         jobsLoading: false,
       };
+
     default:
       return { ...state };
   }

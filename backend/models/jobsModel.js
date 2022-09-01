@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema(
   {
+    jobIndex: {
+      type: Number,
+      required: [true, 'Every job must have an index within its category'],
+    },
     title: {
       type: String,
       required: [true, 'A job must have a name'],

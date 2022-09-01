@@ -22,3 +22,27 @@ const initialData = {
 };
 
 export default initialData;
+
+[
+  {
+    _id: '62c702a671263bc37e52667b',
+    title: 'Category 1',
+    description: 'Aenean sit amet justo. Morbi ut odio.',
+    subtotal: 0,
+    index: 0,
+  },
+  {
+    _id: '62c702a671263bc37e52667c',
+    title: 'Category 2',
+    description: 'Sit amet justo. Morbi ut.',
+    subtotal: 0,
+    index: 1,
+  },
+  {
+    _id: '62c702a671263bc37e52667d',
+    title: 'Category 3',
+    description: 'Amet justo. Morbi.',
+    subtotal: 0,
+    index: 2,
+  },
+];

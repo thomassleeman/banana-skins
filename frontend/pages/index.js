@@ -3,10 +3,10 @@ import { useGlobalContext } from '../utils/context';
 import { useFetch } from '../utils/useFetch';
 import Loading from '../components/Loading';
 import 'normalize.css';
-
 export default function Home() {
   const { loading } = useGlobalContext();
   useFetch('categories/');
+  useFetch('jobs/byCategory');
 
   switch (loading) {
     case true:
