@@ -3,24 +3,37 @@
     "catIndex": 0,
     "title": "Category 1",
     "description": "Aenean sit amet justo. Morbi ut odio.",
-    "subtotal": 0
+    "subtotal": 0,
+    "jobs": [
+      "6312119f39552844a54a09be",
+      "6312119f39552844a54a09c1",
+      "6312119f39552844a54a09c3",
+      "6312119f39552844a54a09c6"
+    ]
   },
   {
     "catIndex": 1,
     "title": "Category 2",
     "description": "Sit amet justo. Morbi ut.",
-    "subtotal": 0
+    "subtotal": 0,
+    "jobs": [
+      "6312119f39552844a54a09cd",
+      "6312119f39552844a54a09cf",
+      "6312119f39552844a54a09d2"
+    ]
   },
   {
     "catIndex": 2,
     "title": "Category 3",
     "description": "Amet justo. Morbi.",
-    "subtotal": 0
+    "subtotal": 0,
+    "jobs": ["6312119f39552844a54a09d4", "6312119f39552844a54a09ca"]
   },
   {
     "catIndex": 3,
     "title": "Category 4",
     "description": "Amet justo. Morbi.",
-    "subtotal": 0
+    "subtotal": 0,
+    "jobs": ["6312119f39552844a54a09c8"]
   }
 ]

@@ -15,9 +15,22 @@ exports.getAllCats = async (req, res, next) => {
   });
 };
 
+exports.getAllCatsInclJobs = async (req, res, next) => {
+  const doc = await Category.find().sort({ catIndex: 'asc' }).populate('jobs');
+
+  //SEND RESPONSE
+  res.status(200).json({
+    status: 'success',
+    results: doc.length,
+    data: {
+      data: doc,
+    },
+  });
+};
+
 exports.getCat = async (req, res, next) => {
   const doc = await Category.findById(req.params.id);
-  console.log(req.params);
+  // console.log(req.params);
 
   res.status(200).json({
     status: 'success',

@@ -9,9 +9,9 @@ be [node, dev-data/import-dev-data.js, --importCats].
 
 If replacing data you need to:
 1. Delete everything using --delete
-2. import categories
-3. Paste the new IDs for categories into the jobs data
-4. import jobs. 
+2. import Jobs
+3. Paste the new IDs for Jobs into the Categories data
+4. import Categories. 
 
 node dev-data/import-dev-data.js --importCats
 node dev-data/import-dev-data.js --importJobs

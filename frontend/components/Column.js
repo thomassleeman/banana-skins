@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import Job from './Job';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import AddJob from './AddJob';
 import { useGlobalContext } from '../utils/context';
-import Loading from './Loading';
-import { useFetch } from '../utils/useFetch';
-
+import { VscAdd } from 'react-icons/vsc';
 const Container = styled.div`
   margin: 8px;
   border: solid 4px #ffff;
@@ -24,49 +24,52 @@ const Tasklist = styled.div`
   min-height: 100px;
 `;
 
-const Column = ({ catId, title, description, index }) => {
-  const { jobsLoading, jobsData } = useGlobalContext();
-  switch (jobsLoading) {
-    case true:
-      return (
-        <Draggable draggableId={catId} index={index}>
-          {(provided) => (
-            <Container {...provided.draggableProps} ref={provided.innerRef}>
-              <Title {...provided.dragHandleProps}>{title}</Title>
-              <p>{description}</p>
-              <Loading />
-            </Container>
-          )}
-        </Draggable>
-      );
-    case false:
-      return (
-        <Draggable draggableId={catId} index={index}>
-          {(provided) => (
-            <Container {...provided.draggableProps} ref={provided.innerRef}>
-              <Title {...provided.dragHandleProps}>{title}</Title>
-              <p>{description}</p>
+const Column = ({ catId, title, description, index, jobs }) => {
+  const { catsData, dispatch } = useGlobalContext();
+  const [showAddJob, setShowAddJob] = useState(false);
 
-              <Droppable droppableId={catId} type="job">
-                {(provided) => (
-                  <Tasklist
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    {jobsData.map((job, index) => {
-                      if (job.category._id === catId) {
-                        return <Job key={job._id} job={job} index={index} />;
-                      }
-                    })}
-                    {provided.placeholder}
-                  </Tasklist>
-                )}
-              </Droppable>
-            </Container>
+  const handleAddJob = (catId) => {};
+
+  return (
+    <Draggable draggableId={catId} index={index}>
+      {(provided) => (
+        <Container {...provided.draggableProps} ref={provided.innerRef}>
+          <Title {...provided.dragHandleProps}>{title}</Title>
+          <p>
+            {description}
+            {`...index: ${index}`}
+          </p>
+
+          <Droppable droppableId={catId} type="job">
+            {(provided) => (
+              <Tasklist ref={provided.innerRef} {...provided.droppableProps}>
+                {jobs.map((job, index) => {
+                  return <Job key={job._id} job={job} index={index} />;
+                })}
+
+                {provided.placeholder}
+              </Tasklist>
+            )}
+          </Droppable>
+          {showAddJob === true ? (
+            <AddJob
+              catId={catId}
+              showAddJob={showAddJob}
+              setShowAddJob={setShowAddJob}
+            />
+          ) : (
+            <button
+              style={{ cursor: 'pointer' }}
+              onClick={() => setShowAddJob(true)}
+            >
+              <VscAdd />
+            </button>
           )}
-        </Draggable>
-      );
-  }
+        </Container>
+      )}
+    </Draggable>
+  );
 };
+// };
 
 export default Column;

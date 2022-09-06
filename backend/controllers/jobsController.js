@@ -1,4 +1,5 @@
 const Jobs = require('../models/jobsModel');
+const Cats = require('../models/categoryModel');
 
 exports.getAllJobs = async (req, res, next) => {
   const doc = await Jobs.find();
@@ -16,16 +17,17 @@ exports.getAllJobs = async (req, res, next) => {
 /* As mongoose sort() does not seem to offer the facility to sort by a parent field I have used JS to first 
 sort by the parent category index and next by the index of each job within each category which is how the data will be presented.
  */
+//BUG This uses parent referencing to the job's category which has been stopped.
 exports.getJobsByCat = async (req, res, next) => {
   const jobs = await Jobs.find();
-  const jobsByOrderedCat = jobs.sort((a, b) => {
+  const doc = jobs.sort((a, b) => {
     return a.category.catIndex - b.category.catIndex;
   });
-  const doc = jobsByOrderedCat.sort((a, b) => {
-    if (a.category._id === b.category._id) {
-      return a.jobIndex - b.jobIndex;
-    }
-  });
+  // const doc = jobsByOrderedCat.sort((a, b) => {
+  //   if (a.category._id === b.category._id) {
+  //     return a.jobIndex - b.jobIndex;
+  //   }
+  // });
 
   //SEND RESPONSE
   res.status(200).json({

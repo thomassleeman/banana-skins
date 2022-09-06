@@ -3,7 +3,7 @@ import reducer from './reducer';
 
 const defaultState = {
   loading: true,
-  jobsLoading: true,
+  // jobsLoading: true,
   user: null,
   userData: [],
   catsData: [],

@@ -12,11 +12,11 @@ export const useFetch = (endPoint, options) => {
 
         // if (options.method === 'GET' || !options.method) {
         const responseJson = await response.json();
-        if (endPoint === 'categories/') {
+        if (endPoint === 'categories/includingJobs') {
           const catsData = responseJson.data.data;
           dispatch({ type: 'UPDATE_CATS', payload: catsData });
         }
-        if (endPoint === 'jobs/byCategory') {
+        if (endPoint === 'jobs/') {
           const jobsData = responseJson.data.data;
           dispatch({ type: 'UPDATE_JOBS', payload: jobsData });
         }

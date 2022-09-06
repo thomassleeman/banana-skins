@@ -22,9 +22,25 @@ const categorySchema = new mongoose.Schema(
     subTotal: {
       type: Number,
     },
+    jobs: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Jobs',
+      },
+    ],
   },
   { collection: 'categories' }
 );
+
+// Child Referencing: This code populates the Jobs.
+// regex below is equivalent to calling `pre()` on `find`, `findOne`, `findOneAndUpdate`.
+
+// categorySchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'jobs',
+//   });
+//   next();
+// });
 
 const Category = mongoose.model('Category', categorySchema);
 

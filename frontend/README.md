@@ -12,7 +12,7 @@ destination: Location information about where the drag ended.
 
 TODO
 ~~Fix cancelled drop~~
-~~Move jobs within category (update index)~~
+~~Move jobs within category ~~
 
 - Move jobs between categories
 - Add new Job

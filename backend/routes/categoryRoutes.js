@@ -18,6 +18,8 @@ router
   .get(categoryController.getAllCats)
   .post(categoryController.createNewCat);
 
+router.route('/includingJobs').get(categoryController.getAllCatsInclJobs);
+
 router
   .route('/:id')
   .get(categoryController.getCat)

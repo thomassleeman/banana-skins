@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema(
   {
-    jobIndex: {
-      type: Number,
-      required: [true, 'Every job must have an index within its category'],
-    },
     title: {
       type: String,
       required: [true, 'A job must have a name'],
@@ -50,22 +46,9 @@ const jobSchema = new mongoose.Schema(
         },
       },
     ],
-    category: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Category',
-      required: [true, 'A job must belong to a category'],
-    },
   },
   { collection: 'jobs' }
 );
-
-//Parent Referencing: This code populates the category
-jobSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'category',
-  });
-  next();
-});
 
 const Jobs = mongoose.model('Jobs', jobSchema);
 

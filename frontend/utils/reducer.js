@@ -15,7 +15,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         jobsData: action.payload,
-        jobsLoading: false,
+        // jobsLoading: false,
       };
 
     default:
