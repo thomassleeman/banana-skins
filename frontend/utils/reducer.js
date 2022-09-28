@@ -12,12 +12,18 @@ const reducer = (state, action) => {
         loading: false,
       };
     case 'UPDATE_JOBS':
+      // console.log('dispatch Jobs');
       return {
         ...state,
         jobsData: action.payload,
         // jobsLoading: false,
       };
-
+    case 'TOGGLE_SHOWADDJOB':
+      return {
+        ...state,
+        showAddJob: !state.showAddJob,
+        newJobCategory: action.payload,
+      };
     default:
       return { ...state };
   }

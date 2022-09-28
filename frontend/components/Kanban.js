@@ -3,25 +3,17 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './Column';
 import { Droppable } from 'react-beautiful-dnd';
 import { useGlobalContext } from '../utils/context';
-import styled from 'styled-components';
 import React, { useCallback } from 'react';
 import { useUpdateDatabase } from '../utils/useUpdateDatabase';
 
-const Container = styled.section`
-  display: flex;
-`;
-
 const Kanban = () => {
   const { catsData, dispatch } = useGlobalContext();
-
-  console.log(catsData);
 
   ///////////////////////////////////////////
   /////////HANDLE ON DRAG END////////////////
   ///////////////////////////////////////////
   const handleOnDragEnd = useCallback((result) => {
     const { destination, source, draggableId, type } = result;
-    console.log('result: ', result);
 
     if (!destination) {
       return;
@@ -52,7 +44,7 @@ const Kanban = () => {
       dispatch({ type: 'UPDATE_CATS', payload: newColumnOrder });
 
       //update database
-      useUpdateDatabase('categories/reorder', newColumnOrder);
+      useUpdateDatabase('categories/reorder', 'PUT', newColumnOrder);
       return;
     }
 
@@ -93,7 +85,7 @@ const Kanban = () => {
       newCatsData.splice(destinationCatIndex, 1, newDestinationCat);
 
       dispatch({ type: 'UPDATE_CATS', payload: newCatsData });
-      useUpdateDatabase('categories/reorder', newCatsData);
+      useUpdateDatabase('categories/reorder', 'PUT', newCatsData);
       return;
     }
   });
@@ -114,7 +106,11 @@ const Kanban = () => {
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="Kanban" direction="horizontal" type="column">
             {(provided) => (
-              <Container {...provided.droppableProps} ref={provided.innerRef}>
+              <div
+                className=" flex flex-nowrap gap-x-8 overflow-x-scroll snap-x snap-mandatory pt-2 px-2 sm:px-6 md:px-8"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
                 {catsData.map((cat, index) => {
                   return (
                     <Column
@@ -128,7 +124,7 @@ const Kanban = () => {
                   );
                 })}
                 {provided.placeholder}
-              </Container>
+              </div>
             )}
           </Droppable>
         </DragDropContext>

@@ -16,9 +16,14 @@ export const useFetch = (endPoint, options) => {
           const catsData = responseJson.data.data;
           dispatch({ type: 'UPDATE_CATS', payload: catsData });
         }
-        if (endPoint === 'jobs/') {
-          const jobsData = responseJson.data.data;
-          dispatch({ type: 'UPDATE_JOBS', payload: jobsData });
+        // if (endPoint === 'jobs/') {
+        //   const jobsData = responseJson.data.data;
+        //   dispatch({ type: 'UPDATE_JOBS', payload: jobsData });
+        // }
+        if (endPoint === 'jobs/' && options.method === 'POST') {
+          const id = responseJson.data.newJobId;
+          return id;
+          // dispatch({ type: 'UPDATE_JOBS', payload: jobsData });
         }
         // }
       } catch (error) {

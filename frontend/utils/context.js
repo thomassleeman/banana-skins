@@ -3,13 +3,16 @@ import reducer from './reducer';
 
 const defaultState = {
   loading: true,
-  // jobsLoading: true,
+  showAddJob: false,
+  showJob: false,
+  newJobCategory: {},
   user: null,
   userData: [],
   catsData: [],
   jobsData: [],
   endPoint: '',
   options: {},
+  currency: '£',
 };
 
 const AppContext = React.createContext();
