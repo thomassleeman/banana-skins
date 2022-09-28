@@ -15,7 +15,9 @@ If replacing data you need to:
 
 node dev-data/import-dev-data.js --importCats
 node dev-data/import-dev-data.js --importJobs
-node dev-data/import-dev-data.js --delete
+node dev-data/import-dev-data.js --deleteAll
+node dev-data/import-dev-data.js --deleteJobs
+node dev-data/import-dev-data.js --deleteCats
  */
 
 const fs = require('fs');
@@ -75,11 +77,31 @@ const importJobsData = async () => {
 
 /* DELETE EXISTING DATA FROM DATABASE
  */
-const deleteData = async () => {
+const deleteAll = async () => {
   try {
     await Job.deleteMany();
     await User.deleteMany();
     await Category.deleteMany();
+    console.log('data deleted 🗑 ');
+  } catch (error) {
+    console.log(error);
+  }
+  process.exit();
+};
+
+const deleteCats = async () => {
+  try {
+    await Category.deleteMany();
+    console.log('Category data deleted 🗑 ');
+  } catch (error) {
+    console.log(error);
+  }
+  process.exit();
+};
+
+const deleteJobs = async () => {
+  try {
+    await Job.deleteMany();
     console.log('data deleted 🗑 ');
   } catch (error) {
     console.log(error);
@@ -94,6 +116,12 @@ if (process.argv[2] === '--importCats') {
 if (process.argv[2] === '--importJobs') {
   importJobsData();
 }
-if (process.argv[2] === '--delete') {
-  deleteData();
+if (process.argv[2] === '--deleteAll') {
+  deleteAll();
+}
+if (process.argv[2] === '--deleteJobs') {
+  deleteJobs();
+}
+if (process.argv[2] === '--deleteCats') {
+  deleteCats();
 }

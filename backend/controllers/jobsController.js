@@ -52,7 +52,7 @@ exports.getJob = async (req, res, next) => {
 };
 
 exports.deleteJob = async (req, res, next) => {
-  const doc = await Jobs.findByIdAndDelete(req.params.id);
+  await Jobs.findByIdAndDelete(req.params.id);
   console.log(req.params);
 
   res.status(204).json({
@@ -64,12 +64,14 @@ exports.deleteJob = async (req, res, next) => {
 };
 
 exports.createNewJob = async (req, res, next) => {
-  await Jobs.create(req.body);
+  const newJob = await Jobs.create(req.body.data);
+  const doc = newJob._id;
+  // console.log(newId);
 
   res.status(201).json({
     status: 'success',
     data: {
-      data: null,
+      data: doc,
     },
   });
 };

@@ -23,6 +23,7 @@ const router = express.Router({ mergeParams: true });
 
 router.route('/').get(getAllJobs).post(createNewJob);
 router.route('/byCategory').get(getJobsByCat);
+//reorder does not make sense as a route name for this.
 router.route('/reorder').put(reorderJobs);
 
 router.route('/:id').get(getJob).patch(updateJob).delete(deleteJob);

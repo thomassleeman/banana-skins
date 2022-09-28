@@ -4,10 +4,13 @@ const jobSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'A job must have a name'],
+      required: [true, 'A job must have a title'],
     },
     description: {
       type: String,
+    },
+    budget: {
+      type: Number,
     },
     cost: {
       type: Number,
