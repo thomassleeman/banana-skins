@@ -1,36 +1,28 @@
 import Kanban from '../components/Kanban';
-import { useState } from 'react';
-import { useGlobalContext } from '../utils/context';
-import { useFetch } from '../utils/useFetch';
-import Loading from '../components/Loading';
 import Nav from '../components/Nav';
-import Modal from '../components/Modal';
-import AddJobForm from '../components/AddJobForm';
+import Test from '../components/Test';
+// import Modal from '../components/Modal';
+// import AddJobForm from '../components/AddJobForm';
 
 export default function Home() {
-  const { loading, showAddJob } = useGlobalContext();
+  // switch (loading) {
+  //   case true:
+  return (
+    <main>
+      <Nav />
+      <Kanban />
+    </main>
+  );
+  //   case false:
+  //     return (
+  //       <main>
+  //         <Nav />
+  //         {showAddJob === true ? <Modal form={AddJobForm} /> : null}
 
-  useFetch('categories/includingJobs');
-  // useFetch('jobs/');
-
-  switch (loading) {
-    case true:
-      return (
-        <main>
-          <Nav />
-          <Loading />
-        </main>
-      );
-    case false:
-      return (
-        <main>
-          <Nav />
-          {showAddJob === true ? <Modal form={AddJobForm} /> : null}
-
-          <Kanban />
-        </main>
-      );
-    default:
-      return <h1>Nothing rendered</h1>;
-  }
+  //         <Kanban />
+  //       </main>
+  //     );
+  //   default:
+  //     return <h1>Nothing rendered</h1>;
+  // }
 }

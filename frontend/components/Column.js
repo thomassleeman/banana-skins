@@ -1,12 +1,9 @@
-// import styled from 'styled-components';
 import Job from './Job';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { useGlobalContext } from '../utils/context';
 import { PlusIcon } from '@heroicons/react/24/outline';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const Column = ({ catId, title, description, index, jobs }) => {
-  const { dispatch, showAddJob } = useGlobalContext();
+  const showAddJob = false;
 
   return (
     <Draggable draggableId={catId} index={index}>

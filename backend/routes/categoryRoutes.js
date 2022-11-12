@@ -26,6 +26,6 @@ router
   .patch(categoryController.updateCat)
   .delete(categoryController.deleteCat);
 
-router.route('/reorder').put(categoryController.reorderCats);
+router.route('/update').patch(categoryController.updateCats);
 
 module.exports = router;

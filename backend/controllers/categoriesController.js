@@ -78,12 +78,7 @@ exports.updateCat = async (req, res, next) => {
   });
 };
 
-exports.reorderCats = async (req, res, next) => {
-  // const doc1 = await Category.deleteMany({
-  //   index: {
-  //     $and: [{ $gte: req.body.startIndex }, { $lte: req.body.finishIndex }],
-  //   },
-  // });
+exports.updateCats = async (req, res, next) => {
   const doc1 = await Category.deleteMany();
   const doc2 = await Category.create(req.body.data);
 
